@@ -1,8 +1,8 @@
 package com.silverafederico.apimarvel.data
 
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
-import com.silverafederico.apimarvel.data.response.ApiCharacterResponse
-import com.silverafederico.apimarvel.data.response.Result
+import com.silverafederico.apimarvel.data.response.characters.ApiCharacterResponse
+import com.silverafederico.apimarvel.data.response.characters.Result
 
 object CharacterNetworkMapper: EntityMapper<Result, MarvelCharacter> {
     override fun mapFromEntity(entity : Result): MarvelCharacter {

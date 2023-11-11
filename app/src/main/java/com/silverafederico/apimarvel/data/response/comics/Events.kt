@@ -1,9 +1,9 @@
-package com.silverafederico.apimarvel.data.response
+package com.silverafederico.apimarvel.data.response.comics
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Series(
+data class Events(
     @SerializedName("available")
     val available: Int,
     @SerializedName("collectionURI")

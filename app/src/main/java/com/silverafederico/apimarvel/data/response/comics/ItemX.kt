@@ -1,13 +1,13 @@
-package com.silverafederico.apimarvel.data.response
+package com.silverafederico.apimarvel.data.response.comics
 
 
 import com.google.gson.annotations.SerializedName
 
-data class ItemXXX(
+data class ItemX(
     @SerializedName("name")
     val name: String,
     @SerializedName("resourceURI")
     val resourceURI: String,
-    @SerializedName("type")
-    val type: String
+    @SerializedName("role")
+    val role: String
 )

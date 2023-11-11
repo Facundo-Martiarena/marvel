@@ -10,11 +10,11 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 
-class HomeViewModel:ViewModel() {
+class HomeViewModel(private val characterRepository: CharacterRepository):ViewModel() {
     private val _characters = MutableLiveData<MarvelCharacter>()
     val characters: LiveData<MarvelCharacter> get() = _characters
 
-    private val charactersRepository = CharacterRepository
+//    private val charactersRepository = CharacterRepository
 
     private val _uiState = MutableLiveData<HomeUIState>()
     val uiState : LiveData<HomeUIState> get() = _uiState
@@ -26,8 +26,9 @@ class HomeViewModel:ViewModel() {
 
     private fun fetchCharacters(){
         viewModelScope.launch {
+
             try {
-                val newCharacters = charactersRepository.fetchCharacters()
+                val newCharacters = characterRepository.fetchCharacters()
                 val currentState = _uiState.value ?: HomeUIState()
                 val newUIState = currentState.copy(characters = newCharacters)
                 _uiState.postValue(newUIState)
@@ -45,15 +46,3 @@ data class HomeUIState(
     val error: String? = null
 )
 
-//private val repository = CharacterRepository
-//private val _characters = MutableLiveData<List<MarvelCharacter>>()
-//val characters: LiveData<List<MarvelCharacter>>
-//    get() = _characters
-//
-//fun fetchCharacter(){
-//    viewModelScope.launch{
-//        repository.fetchCharacters().run {
-//            _characters.postValue(this)
-//        }
-//    }
-//}

@@ -1,4 +1,4 @@
-package com.silverafederico.apimarvel.data.response
+package com.silverafederico.apimarvel.data.response.characters
 
 
 import com.google.gson.annotations.SerializedName
