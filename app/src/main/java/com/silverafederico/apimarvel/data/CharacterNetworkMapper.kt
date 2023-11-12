@@ -11,10 +11,13 @@ object CharacterNetworkMapper: EntityMapper<Result, MarvelCharacter> {
             id = entity.id,
             name = entity.name,
             description = entity.description,
-            image = "${imagePath}.${entity.thumbnail.extension}"
+            image = "${imagePath}.${entity.thumbnail.extension}",
+
         )
 
     }
+
+
     override fun mapToEntity(domainModel: MarvelCharacter): Result {
         return null as Result
     }

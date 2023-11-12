@@ -4,6 +4,7 @@ import com.silverafederico.apimarvel.BuildConfig
 import com.silverafederico.apimarvel.data.ApiService
 import com.silverafederico.apimarvel.data.CharacterNetworkMapper
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
+import com.silverafederico.apimarvel.data.models.MarvelComic
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.util.Date
@@ -17,6 +18,6 @@ class ComicsRepository(private val apiService: ApiService): IComicsRepository {
             hash = (timeStamp+ BuildConfig.PRIVATE_KEY+ BuildConfig.PUBLIC_KEY).md5().toHex(),
             characterId = characterId
         )
-        return CharacterNetworkMapper.fromGetCharactersResponse(characters)
+        return CharacterNetworkMapper.fromGetCharactersResponse(characters) /*implementar*/
     }
 }
