@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/detailsCharacter"
+    android:id="@+id/detailsComic"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
@@ -28,10 +28,24 @@
         android:text="name"
         android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintBottom_toTopOf="@id/description"
+        app:layout_constraintBottom_toTopOf="@id/issueNumber"
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/issueNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="(issueNumber)"
+        android:textSize="15sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/description"/>
 
     <TextView
         android:id="@+id/description"
@@ -46,7 +60,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/issueNumber" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -60,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="COMICS"
+        android:text="CHARACTERS"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -82,7 +96,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/comics"
         app:layout_constraintVertical_bias="0.297"
-        tools:listitem="@layout/comic_recyclerview" />
+        tools:listitem="@layout/character_vertical_recyclerview" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
