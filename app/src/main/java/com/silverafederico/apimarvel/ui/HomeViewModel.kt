@@ -28,7 +28,7 @@ class HomeViewModel(private val characterRepository: CharacterRepository):ViewMo
         viewModelScope.launch {
 
             try {
-                val newCharacters = characterRepository.fetchCharacters()
+                val newCharacters = characterRepository.fetchCharacters(_uiState.value?.querySearch)
                 val currentState = _uiState.value ?: HomeUIState()
                 val newUIState = currentState.copy(characters = newCharacters)
                 _uiState.postValue(newUIState)
@@ -43,6 +43,7 @@ class HomeViewModel(private val characterRepository: CharacterRepository):ViewMo
 
 data class HomeUIState(
     val characters: List<MarvelCharacter> = emptyList(),
-    val error: String? = null
+    val error: String? = null,
+    val querySearch:String? = "",
 )
 

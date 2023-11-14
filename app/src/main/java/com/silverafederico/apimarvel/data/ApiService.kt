@@ -13,6 +13,7 @@ interface ApiService {
         @Query("apikey") apiKey: String,
         @Query("ts") ts: String,
         @Query("hash") hash: String,
+        @Query("nameStartsWith") nameStartsWith: String?,
     ): ApiCharacterResponse
 
     @GET("characters/{characterId}/comics")

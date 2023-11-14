@@ -9,12 +9,13 @@ import java.security.MessageDigest
 import java.util.Date
 
 class CharacterRepository(private val apiService:ApiService): ICharacterRepository {
-    override suspend fun fetchCharacters(): List<MarvelCharacter>{
+    override suspend fun fetchCharacters(nameStartsWith:String?): List<MarvelCharacter>{
         val timeStamp = Date().time.toString()
         val characters = apiService.listCharacters(
                 apiKey = BuildConfig.PUBLIC_KEY,
                 ts = timeStamp,
-                hash = (timeStamp+BuildConfig.PRIVATE_KEY+BuildConfig.PUBLIC_KEY).md5().toHex()
+                hash = (timeStamp+BuildConfig.PRIVATE_KEY+BuildConfig.PUBLIC_KEY).md5().toHex(),
+                nameStartsWith = nameStartsWith
             )
         return CharacterNetworkMapper.fromGetCharactersResponse(characters)
     }
