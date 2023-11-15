@@ -2,7 +2,6 @@ package com.silverafederico.apimarvel.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.silverafederico.apimarvel.databinding.DetailsCharacterBinding
 import coil.load
 import com.silverafederico.apimarvel.R
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
