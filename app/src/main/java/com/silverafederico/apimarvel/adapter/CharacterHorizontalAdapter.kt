@@ -3,20 +3,19 @@ package com.silverafederico.apimarvel.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.silverafederico.apimarvel.data.models.MarvelCharacter
-import com.silverafederico.apimarvel.R
 import coil.load
-import com.silverafederico.apimarvel.databinding.CharacterRecyclerviewBinding
+import com.silverafederico.apimarvel.R
+import com.silverafederico.apimarvel.data.models.MarvelCharacter
+import com.silverafederico.apimarvel.data.models.MarvelComic
+import com.silverafederico.apimarvel.databinding.CharacterVerticalRecyclerviewBinding
+import com.silverafederico.apimarvel.databinding.ComicRecyclerviewBinding
 
-interface OnItemClickListen{
-    fun onItemCharacterClick(item: MarvelCharacter)
-}
 
-class CharacterAdapter(private val list: List<MarvelCharacter>, private val onItemClickListen: OnItemClickListen): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>(){
-    inner class CharacterViewHolder(val binding: CharacterRecyclerviewBinding): RecyclerView.ViewHolder(binding.root)
+class CharacterHorizontalAdapter(private val list: List<MarvelCharacter>, private val onItemClickListen: OnItemClickListen): RecyclerView.Adapter<CharacterHorizontalAdapter.CharacterViewHolder>(){
+    inner class CharacterViewHolder(val binding: CharacterVerticalRecyclerviewBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        val binding = CharacterRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent , false)
+        val binding = CharacterVerticalRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return CharacterViewHolder(binding)
     }
 
@@ -27,8 +26,7 @@ class CharacterAdapter(private val list: List<MarvelCharacter>, private val onIt
                 crossfade(true)
                 placeholder(R.drawable.image_placeholder)
             }
-            name.text= item.name
-            description.text= item.description
+            nameCharacter.text= item.name
         }
         holder.binding.root.setOnClickListener{
             onItemClickListen.onItemCharacterClick(item)

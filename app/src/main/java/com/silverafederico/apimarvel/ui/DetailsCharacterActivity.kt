@@ -6,13 +6,14 @@ import com.silverafederico.apimarvel.databinding.DetailsCharacterBinding
 import coil.load
 import com.silverafederico.apimarvel.R
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
+import com.silverafederico.apimarvel.databinding.ActivityDetailsCharacterBinding
 import kotlinx.serialization.json.Json
 
 class DetailsCharacterActivity : AppCompatActivity() {
-    private lateinit var binding:DetailsCharacterBinding
+    private lateinit var binding:ActivityDetailsCharacterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DetailsCharacterBinding.inflate(layoutInflater)
+        binding = ActivityDetailsCharacterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val itemJson = intent.getStringExtra("item")
         val item: MarvelCharacter? = itemJson?.let { Json.decodeFromString(it) }
