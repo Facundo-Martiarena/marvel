@@ -1,5 +1,6 @@
 package com.silverafederico.apimarvel.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.data.repositories.CharacterRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
+import kotlin.math.log
 
 
 class HomeViewModel(private val characterRepository: CharacterRepository):ViewModel() {
@@ -19,12 +21,9 @@ class HomeViewModel(private val characterRepository: CharacterRepository):ViewMo
     private val _uiState = MutableLiveData<HomeUIState>()
     val uiState : LiveData<HomeUIState> get() = _uiState
 
+    
 
-    init {
-        fetchCharacters()
-    }
-
-    private fun fetchCharacters(){
+    private fun searchCharacters(){
         viewModelScope.launch {
 
             try {
@@ -35,11 +34,21 @@ class HomeViewModel(private val characterRepository: CharacterRepository):ViewMo
             } catch (exception: IOException){
                 val currentState = _uiState.value ?: HomeUIState()
                 _uiState.postValue(currentState.copy(error = exception.message))
+                Log.e("searchCharacter","Fallo de carga",exception)
             }
         }
     }
+    fun setSearchQuery(query: String) {
+        val currentState = _uiState.value ?: HomeUIState()
+        _uiState.value = currentState.copy(querySearch = query)
+        if(query.length > 0){
+            searchCharacters()
+        }
+    }
+
 
 }
+
 
 data class HomeUIState(
     val characters: List<MarvelCharacter> = emptyList(),

@@ -12,6 +12,7 @@ object CharacterNetworkMapper: EntityMapper<Result, MarvelCharacter> {
             name = entity.name,
             description = entity.description,
             image = "${imagePath}.${entity.thumbnail.extension}",
+            comics = emptyList(),
 
         )
 

@@ -7,19 +7,17 @@ import com.silverafederico.apimarvel.data.ComicsNetworkMapper
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.data.models.MarvelComic
 import kotlinx.serialization.Serializable
-import java.nio.charset.StandardCharsets
-import java.security.MessageDigest
 import java.util.Date
 @Serializable
-class ComicsRepository(private val apiService: ApiService): IComicsRepository {
-    override suspend fun fetchComics(characterId:String): List<MarvelComic>{
+class CharacterNameRepository(private val apiService: ApiService): ICharacterNameRepository {
+    override suspend fun fetchCharacterName(comicId:String): List<MarvelCharacter>{
         val timeStamp = Date().time.toString()
-        val comics = apiService.listComics(
+        val characters = apiService.listCharactersName(
             apiKey = BuildConfig.PUBLIC_KEY,
             ts = timeStamp,
             hash = (timeStamp+ BuildConfig.PRIVATE_KEY+ BuildConfig.PUBLIC_KEY).md5().toHex(),
-            characterId = characterId
+            comicId = comicId
         )
-        return ComicsNetworkMapper.fromGetComicsResponse(comics)
+        return CharacterNetworkMapper.fromGetCharactersResponse(characters)
     }
 }

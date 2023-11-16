@@ -8,8 +8,7 @@ data class MarvelCharacter(
     val name: String,
     val description: String,
     val image: String,
-) {
-    val comics: MutableList<MarvelComic> = mutableListOf()
-}
+    val comics: List<MarvelComic>,
+)
 
 
