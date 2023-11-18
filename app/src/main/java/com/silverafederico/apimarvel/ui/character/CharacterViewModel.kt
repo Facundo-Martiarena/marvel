@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.silverafederico.apimarvel.data.models.MarvelComic
 import com.silverafederico.apimarvel.data.repositories.ComicsRepository
+import com.silverafederico.apimarvel.ui.home.HomeUIState
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -35,7 +36,12 @@ class CharacterViewModel(private val comicsRepository: ComicsRepository): ViewMo
     }
     fun runComics(characterID:String?){
         // igual que searchquery
-        getComics()
+        val currentState = _uiState.value ?: CharacterUIState()
+        _uiState.value = currentState.copy(characterId = characterID)
+        if (characterID != null){
+            getComics()
+        }
+
 
     }
 

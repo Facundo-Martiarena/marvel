@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import coil.load
 import com.silverafederico.apimarvel.R
 import com.silverafederico.apimarvel.adapter.CharacterAdapter
@@ -26,23 +27,29 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DetailsCharacterActivity : AppCompatActivity(), OnItemComicClickListen {
     private lateinit var binding:ActivityDetailsCharacterBinding
     private val viewModel by viewModel<CharacterViewModel>()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsCharacterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val itemJson = intent.getStringExtra("item")
         val item: MarvelCharacter? = itemJson?.let { Json.decodeFromString(it) }
+
+
         binding.name.text = item?.name
         binding.description.text = item?.description
         binding.imageView.load(item?.image){
             crossfade(true)
             placeholder(R.drawable.image_placeholder)
         }
+        viewModel.runComics(item?.id.toString())
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.uiState.observe(this@DetailsCharacterActivity){uiState ->
                     if (uiState.comics.isNotEmpty()) {
-                        binding.recyclerView.layoutManager = LinearLayoutManager(this@DetailsCharacterActivity)
+                        binding.recyclerView.layoutManager = LinearLayoutManager(this@DetailsCharacterActivity,HORIZONTAL,false)
                         binding.recyclerView.adapter = ComicAdapter(uiState.comics,this@DetailsCharacterActivity)
                     }else
                         Toast.makeText(this@DetailsCharacterActivity,"lista vacia",Toast.LENGTH_SHORT).show()
