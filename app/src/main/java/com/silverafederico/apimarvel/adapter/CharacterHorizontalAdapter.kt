@@ -7,15 +7,15 @@ import coil.load
 import com.silverafederico.apimarvel.R
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.data.models.MarvelComic
-import com.silverafederico.apimarvel.databinding.CharacterVerticalRecyclerviewBinding
+import com.silverafederico.apimarvel.databinding.CharacterHorizontalRecyclerviewBinding
 import com.silverafederico.apimarvel.databinding.ComicRecyclerviewBinding
 
 
 class CharacterHorizontalAdapter(private val list: List<MarvelCharacter>, private val onItemClickListen: OnItemClickListen): RecyclerView.Adapter<CharacterHorizontalAdapter.CharacterViewHolder>(){
-    inner class CharacterViewHolder(val binding: CharacterVerticalRecyclerviewBinding): RecyclerView.ViewHolder(binding.root)
+    inner class CharacterViewHolder(val binding: CharacterHorizontalRecyclerviewBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        val binding = CharacterVerticalRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent , false)
+        val binding = CharacterHorizontalRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return CharacterViewHolder(binding)
     }
 

@@ -1,4 +1,4 @@
-package com.silverafederico.apimarvel.ui
+package com.silverafederico.apimarvel.ui.home
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -9,7 +9,6 @@ import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.data.repositories.CharacterRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
-import kotlin.math.log
 
 
 class HomeViewModel(private val characterRepository: CharacterRepository):ViewModel() {

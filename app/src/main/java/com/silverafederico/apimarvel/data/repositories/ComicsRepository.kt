@@ -12,7 +12,7 @@ import java.security.MessageDigest
 import java.util.Date
 @Serializable
 class ComicsRepository(private val apiService: ApiService): IComicsRepository {
-    override suspend fun fetchComics(characterId:String): List<MarvelComic>{
+    override suspend fun fetchComics(characterId:String?): List<MarvelComic>{
         val timeStamp = Date().time.toString()
         val comics = apiService.listComics(
             apiKey = BuildConfig.PUBLIC_KEY,
