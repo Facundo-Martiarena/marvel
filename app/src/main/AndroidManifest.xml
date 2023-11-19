@@ -17,6 +17,9 @@
             android:name=".ui.character.DetailsCharacterActivity"
             android:exported="false" />
         <activity
+        android:name=".ui.comic.DetailsComicActivity"
+        android:exported="false" />
+        <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true">
             <intent-filter>

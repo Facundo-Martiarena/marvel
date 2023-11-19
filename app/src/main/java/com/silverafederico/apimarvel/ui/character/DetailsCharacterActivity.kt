@@ -49,10 +49,11 @@ class DetailsCharacterActivity : AppCompatActivity(), OnItemComicClickListen {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.uiState.observe(this@DetailsCharacterActivity){uiState ->
                     if (uiState.comics.isNotEmpty()) {
-                        binding.recyclerView.layoutManager = LinearLayoutManager(this@DetailsCharacterActivity,HORIZONTAL,false)
-                        binding.recyclerView.adapter = ComicAdapter(uiState.comics,this@DetailsCharacterActivity)
-                    }else
-                        Toast.makeText(this@DetailsCharacterActivity,"lista vacia",Toast.LENGTH_SHORT).show()
+                        binding.recyclerView.layoutManager =
+                            LinearLayoutManager(this@DetailsCharacterActivity, HORIZONTAL, false)
+                        binding.recyclerView.adapter =
+                            ComicAdapter(uiState.comics, this@DetailsCharacterActivity)
+                    }
 
                 }
             }

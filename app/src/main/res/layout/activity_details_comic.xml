@@ -14,8 +14,9 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.919"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -25,10 +26,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:padding="2dp"
         android:text="name"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/issueNumber"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +41,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="(issueNumber)"
-        android:textSize="15sp"
+        android:textSize="10sp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
@@ -50,15 +54,15 @@
     <TextView
         android:id="@+id/description"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="Description"
+        android:ellipsize="end"
+        android:maxLines="10"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/issueNumber" />
 
@@ -67,20 +71,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.500684" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <TextView
-        android:id="@+id/comics"
+        android:id="@+id/characters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="CHARACTERS"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -92,10 +97,10 @@
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/comics"
-        app:layout_constraintVertical_bias="0.297"
+        app:layout_constraintTop_toBottomOf="@id/characters"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/character_horizontal_recyclerview" />
 
     <androidx.constraintlayout.widget.Guideline
