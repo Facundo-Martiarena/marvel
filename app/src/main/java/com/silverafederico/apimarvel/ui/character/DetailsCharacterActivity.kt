@@ -59,6 +59,7 @@ class DetailsCharacterActivity : AppCompatActivity(), OnItemComicClickListen {
             }
         }
 
+
     }
 
     override fun onItemComicClick(item: MarvelComic) {
@@ -66,5 +67,13 @@ class DetailsCharacterActivity : AppCompatActivity(), OnItemComicClickListen {
         val intent = Intent(this, DetailsComicActivity::class.java)
         intent.putExtra("item", itemJson)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val itemJson = intent.getStringExtra("item")
+        val item: MarvelCharacter? = itemJson?.let { Json.decodeFromString(it) }
+        Toast.makeText(this,"${item?.id}",Toast.LENGTH_SHORT).show()
+        viewModel.runComics(item?.id.toString())
     }
 }

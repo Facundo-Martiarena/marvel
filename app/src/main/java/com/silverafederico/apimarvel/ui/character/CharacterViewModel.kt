@@ -35,7 +35,7 @@ class CharacterViewModel(private val comicsRepository: ComicsRepository): ViewMo
         }
     }
     fun runComics(characterID:String?){
-        // igual que searchquery
+
         val currentState = _uiState.value ?: CharacterUIState()
         _uiState.value = currentState.copy(characterId = characterID)
         if (characterID != null){
@@ -43,6 +43,10 @@ class CharacterViewModel(private val comicsRepository: ComicsRepository): ViewMo
         }
 
 
+    }
+    fun clearData(){
+        val currentState = _uiState.value ?: CharacterUIState()
+        _uiState.value = currentState.copy(comics = emptyList())
     }
 
 

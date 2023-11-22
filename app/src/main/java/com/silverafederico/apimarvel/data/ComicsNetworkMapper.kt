@@ -8,6 +8,7 @@ object ComicsNetworkMapper :EntityMapper<Result,MarvelComic>{
     override fun mapFromEntity(entity: Result): MarvelComic {
         val imagePath = entity.thumbnail.path.replace("http", "https")
         return MarvelComic(
+            id = entity.id,
             issueNumber = entity.issueNumber,
             title = entity.title,
             description = entity.description,

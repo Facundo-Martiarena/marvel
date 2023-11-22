@@ -11,7 +11,7 @@ import com.silverafederico.apimarvel.databinding.CharacterHorizontalRecyclerview
 import com.silverafederico.apimarvel.databinding.ComicRecyclerviewBinding
 
 
-class CharacterHorizontalAdapter(private val list: List<MarvelCharacter>, private val onItemClickListen: OnItemClickListen): RecyclerView.Adapter<CharacterHorizontalAdapter.CharacterViewHolder>(){
+class CharacterHorizontalAdapter(private val list: List<MarvelCharacter>): RecyclerView.Adapter<CharacterHorizontalAdapter.CharacterViewHolder>(){
     inner class CharacterViewHolder(val binding: CharacterHorizontalRecyclerviewBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
@@ -27,9 +27,6 @@ class CharacterHorizontalAdapter(private val list: List<MarvelCharacter>, privat
                 placeholder(R.drawable.image_placeholder)
             }
             nameCharacter.text= item.name
-        }
-        holder.binding.root.setOnClickListener{
-            onItemClickListen.onItemCharacterClick(item)
         }
     }
     override fun getItemCount(): Int {

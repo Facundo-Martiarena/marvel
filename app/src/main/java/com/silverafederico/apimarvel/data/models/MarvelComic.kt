@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MarvelComic(
+    val id: Int,
     val issueNumber: Double?,
     val title: String?,
     val description: String?,

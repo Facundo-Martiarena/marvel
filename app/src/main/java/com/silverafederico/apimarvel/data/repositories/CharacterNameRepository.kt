@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 import java.util.Date
 @Serializable
 class CharacterNameRepository(private val apiService: ApiService): ICharacterNameRepository {
-    override suspend fun fetchCharacterName(comicId:String): List<MarvelCharacter>{
+    override suspend fun fetchCharacterName(comicId:String?): List<MarvelCharacter>{
         val timeStamp = Date().time.toString()
         val characters = apiService.listCharactersName(
             apiKey = BuildConfig.PUBLIC_KEY,

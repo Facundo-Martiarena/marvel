@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import com.silverafederico.apimarvel.adapter.OnItemClickListen
 import com.silverafederico.apimarvel.databinding.ActivityHomeBinding
