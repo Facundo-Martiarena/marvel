@@ -10,7 +10,6 @@ import kotlinx.serialization.Serializable
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.util.Date
-@Serializable
 class ComicsRepository(private val apiService: ApiService): IComicsRepository {
     override suspend fun fetchComics(characterId:String?): List<MarvelComic>{
         val timeStamp = Date().time.toString()

@@ -57,7 +57,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("io.coil-kt:coil:2.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation ("androidx.activity:activity-ktx:1.4.0")
     implementation ("io.insert-koin:koin-android:3.2.2")
 }

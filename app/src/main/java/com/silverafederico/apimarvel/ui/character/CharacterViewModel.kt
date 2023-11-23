@@ -12,13 +12,9 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 class CharacterViewModel(private val comicsRepository: ComicsRepository): ViewModel() {
-    private val _comics = MutableLiveData<MarvelComic>()
-    val comics: LiveData<MarvelComic> get() = _comics
 
     private val _uiState = MutableLiveData<CharacterUIState>()
     val uiState : LiveData<CharacterUIState> get() = _uiState
-
-
 
     private fun getComics(){
         viewModelScope.launch {
@@ -32,12 +28,15 @@ class CharacterViewModel(private val comicsRepository: ComicsRepository): ViewMo
                 _uiState.postValue(currentState.copy(error = exception.message))
                 Log.e("searchComics","Fallo de carga",exception)
             }
+            catch (e: Exception) {
+                Log.e("searchComics","Fallo de carga", e)
+            }
         }
     }
     fun runComics(characterID:String?){
 
         val currentState = _uiState.value ?: CharacterUIState()
-        _uiState.value = currentState.copy(characterId = characterID)
+        _uiState.value = currentState.copy(characterId = characterID, comics = emptyList())
         if (characterID != null){
             getComics()
         }

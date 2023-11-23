@@ -11,6 +11,7 @@ import com.silverafederico.apimarvel.ui.home.HomeViewModel
 import com.silverafederico.apimarvel.ui.character.CharacterViewModel
 import com.silverafederico.apimarvel.ui.comic.ComicViewModel
 import okhttp3.OkHttpClient
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -24,9 +25,9 @@ val repositoriesModule = module {
 }
 
 val viewModelsModule = module {
-    singleOf(::HomeViewModel)
-    singleOf(::CharacterViewModel)
-    singleOf(::ComicViewModel)
+    viewModelOf(::HomeViewModel)
+    viewModelOf(::CharacterViewModel)
+    viewModelOf(::ComicViewModel)
 }
 val networkModule = module {
     singleOf(::OkHttpClient){

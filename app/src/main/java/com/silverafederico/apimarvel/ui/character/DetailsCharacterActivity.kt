@@ -69,11 +69,5 @@ class DetailsCharacterActivity : AppCompatActivity(), OnItemComicClickListen {
         startActivity(intent)
     }
 
-    override fun onResume() {
-        super.onResume()
-        val itemJson = intent.getStringExtra("item")
-        val item: MarvelCharacter? = itemJson?.let { Json.decodeFromString(it) }
-        Toast.makeText(this,"${item?.id}",Toast.LENGTH_SHORT).show()
-        viewModel.runComics(item?.id.toString())
-    }
+
 }
