@@ -18,9 +18,19 @@ interface ApiService {
 
     @GET("characters/{characterId}/comics")
     suspend fun listComics(
+        @Path("characterId") characterId: String?,
         @Query("apikey") apiKey: String,
         @Query("ts") ts: String,
         @Query("hash") hash: String,
-        @Path("characterId") characterId: String,
+
     ): ApiComicsResponse
+
+    @GET("comics/{comicId}/characters")
+    suspend fun listCharactersName(
+        @Path("comicId") comicId: String?,
+        @Query("apikey") apiKey: String,
+        @Query("ts") ts: String,
+        @Query("hash") hash: String,
+    ):ApiCharacterResponse
+
 }

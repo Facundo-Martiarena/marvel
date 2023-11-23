@@ -17,11 +17,13 @@
         android:layout_margin="8dp"/>
 
     <TextView
-        android:id="@+id/nameCharacter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/nameComic"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
         android:text="ComicName"
+        android:ellipsize="end"
+        android:maxLines="5"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_margin="8dp"

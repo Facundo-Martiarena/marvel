@@ -4,6 +4,7 @@ import com.silverafederico.apimarvel.BuildConfig
 import com.silverafederico.apimarvel.data.ApiService
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.data.CharacterNetworkMapper
+import kotlinx.serialization.Serializable
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.util.Date
