@@ -28,7 +28,7 @@ class ComicAdapter(private val list: List<MarvelComic>, private val onItemComicC
                 crossfade(true)
                 placeholder(R.drawable.image_placeholder)
             }
-            nameComic.text= item.title
+            //nameComic.text= item.title
         }
         holder.binding.root.setOnClickListener{
             onItemComicClickListen.onItemComicClick(item)
