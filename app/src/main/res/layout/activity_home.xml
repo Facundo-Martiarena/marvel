@@ -27,11 +27,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="12dp"
-        android:background="@mipmap/bg_marvel"
+        android:background="@color/fui_transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBar"
         tools:listitem="@layout/character_recyclerview"/>
 
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:srcCompat="@mipmap/heros" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
