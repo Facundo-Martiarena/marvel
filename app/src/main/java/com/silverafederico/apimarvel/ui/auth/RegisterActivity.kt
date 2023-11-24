@@ -1,5 +1,6 @@
-package com.silverafederico.apimarvel.ui
+package com.silverafederico.apimarvel.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -10,10 +11,13 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.silverafederico.apimarvel.databinding.ActivityRegisterBinding
+import com.silverafederico.apimarvel.utils.AuthUtils
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
+    private var textAlert : String = "Registration"
+    private lateinit var authUtils: AuthUtils
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
         auth = Firebase.auth
+        authUtils = AuthUtils(this)
 
         binding.btnRegister.setOnClickListener {
             val name = binding.editTextName.text.toString()
@@ -33,22 +38,13 @@ class RegisterActivity : AppCompatActivity() {
 
             if (password == repeatPassword) {
                 auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
+                    .addOnCompleteListener() {
+                        if (it.isSuccessful) {
                             val user = auth.currentUser
-                            updateUI(user)
-                            Toast.makeText(
-                                this@RegisterActivity,
-                                "Registration successful",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            authUtils.updateUI(user, textAlert)
+                            showLoginScreen()
                         } else {
-                            updateUI(null)
-                            Toast.makeText(
-                                this@RegisterActivity,
-                                "Registration failed. ${task.exception?.message}",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            authUtils.updateUI(null, textAlert)
                         }
                     }
             } else {
@@ -59,35 +55,15 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
         }
-    }
 
-    private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            showSuccessDialog("Registration successful")
-        } else {
-            showErrorDialog("Registration failed. Please try again.")
+        binding.btnCancel.setOnClickListener {
+            showLoginScreen()
         }
     }
 
-    private fun showSuccessDialog(message: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Success")
-        builder.setMessage(message)
-        builder.setPositiveButton("OK") { dialog, which ->
-            dialog.dismiss()
-        }
-        builder.show()
+    private fun showLoginScreen() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
-
-    private fun showErrorDialog(message: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error")
-        builder.setMessage(message)
-        builder.setPositiveButton("OK") { dialog, which ->
-            dialog.dismiss()
-        }
-        builder.show()
-    }
-
 
 }

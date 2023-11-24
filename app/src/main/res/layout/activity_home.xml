@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@mipmap/bg_marvel"
     tools:context=".ui.home.HomeActivity">
 
     <androidx.appcompat.widget.SearchView
@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="12dp"
+        android:background="@mipmap/bg_marvel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBar"
         tools:listitem="@layout/character_recyclerview"/>
