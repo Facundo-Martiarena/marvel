@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.silverafederico.apimarvel.R
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.data.models.MarvelComic
@@ -27,8 +28,9 @@ class ComicAdapter(private val list: List<MarvelComic>, private val onItemComicC
             image.load(item.image){
                 crossfade(true)
                 placeholder(R.drawable.image_placeholder)
+                transformations(CircleCropTransformation())
             }
-            //nameComic.text= item.title
+            nameComic.text= item.title
         }
         holder.binding.root.setOnClickListener{
             onItemComicClickListen.onItemComicClick(item)
