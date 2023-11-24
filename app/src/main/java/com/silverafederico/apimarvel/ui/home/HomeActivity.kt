@@ -54,6 +54,9 @@ class HomeActivity : AppCompatActivity(), OnItemClickListen {
                 return true
             }
         })
+        binding.searchBar.setOnClickListener{
+            binding.searchBar.isIconified = false
+        }
 
     }
 

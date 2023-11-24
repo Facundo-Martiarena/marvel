@@ -3,6 +3,6 @@
     <style name="search_view" parent="Widget.AppCompat.SearchView">
         <item name="android:background">@drawable/search_view_background</item>
         <item name="android:searchHintIcon">@drawable/custom_search_hint_icon</item>
-        <item name="android:editTextColor">@color/yellow</item>
+        <item name="android:editTextColor">@color/black</item>
     </style>
 </resources>
