@@ -32,14 +32,13 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:textColorHint="#FFFFFF"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
-        app:boxStrokeColor="@color/white"
-        app:counterTextColor="@android:color/white"
-        app:hintTextColor="@color/white"
+        app:boxStrokeColor="@color/black"
+        android:textColorHint="@color/black"
+        app:counterTextColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,11 +50,13 @@
             android:id="@+id/editTextEmailInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:hint="Email input"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:textColorHint="@color/white" />
+
+            app:hintTextColor="@null"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,14 +68,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:background="@color/white"
         android:inputType="textPassword"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
-        app:hintTextColor="@color/white"
+        app:hintTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -82,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         app:layout_constraintVertical_bias="0.0"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white">
+        app:passwordToggleTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPasswordInput"
@@ -91,9 +93,9 @@
             android:hint="Password input"
             app:passwordToggleEnabled="true"
             android:imeOptions="actionDone"
-            android:background="@color/black"
+            android:background="@color/white"
             android:inputType="textPassword"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
