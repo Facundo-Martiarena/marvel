@@ -69,6 +69,10 @@ class LoginActivity : AppCompatActivity() {
         binding.regBtn.setOnClickListener {
             showRegisterScreen()
         }
+
+        binding.btnPassword.setOnClickListener {
+            showRecoveryScreen()
+        }
     }
 
     private fun handleAccountLockout() {
@@ -79,6 +83,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showRegisterScreen() {
         val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
+    private fun showRecoveryScreen() {
+        val intent = Intent(this, ResetPasswordActivity::class.java)
         startActivity(intent)
     }
 
