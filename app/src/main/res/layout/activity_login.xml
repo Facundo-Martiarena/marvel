@@ -53,6 +53,7 @@
             android:background="@color/white"
             android:textColor="@color/black"
             android:hint="Email input"
+            android:maxLines="1"
             android:imeOptions="actionDone"
             android:inputType="text"
 
@@ -91,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Password input"
+            android:maxLines="1"
             app:passwordToggleEnabled="true"
             android:imeOptions="actionDone"
             android:background="@color/white"
