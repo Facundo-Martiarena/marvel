@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
     private var loginAttempts = 0
     private val maxLoginAttempts = 3
-    private val lockoutTimeMillis = 5 * 60 * 1000 // 5 minutos en milisegundos
+    private val lockoutTimeMillis = 1 * 60 * 1000 // 5 minutos en milisegundos
     private var isAccountLocked = false
     private lateinit var lockoutTimer: CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,24 +47,27 @@ class LoginActivity : AppCompatActivity() {
         binding.signBtn.setOnClickListener {
             val email = binding.editTextEmailInput.text.toString()
             val password = binding.editTextPasswordInput.text.toString()
-
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) {
-                    if (it.isSuccessful) {
-                        val user = auth.currentUser
-                        authUtils.updateUI(user, textAlert)
-                        showHomeScreen()
-                    } else {
-                        loginAttempts++
-                        if (loginAttempts >= maxLoginAttempts) {
-                            isAccountLocked = true
-                            lockoutTimer.start()
-                            handleAccountLockout()
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
+            } else {
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) {
+                        if (it.isSuccessful) {
+                            val user = auth.currentUser
+                            authUtils.updateUI(user, textAlert)
+                            showHomeScreen()
                         } else {
-                            authUtils.updateUI(null, textAlert)
+                            loginAttempts++
+                            if (loginAttempts >= maxLoginAttempts) {
+                                isAccountLocked = true
+                                lockoutTimer.start()
+                                handleAccountLockout()
+                            } else {
+                                authUtils.updateUI(null, textAlert)
+                            }
                         }
                     }
-                }
+            }
         }
 
         binding.regBtn.setOnClickListener {
