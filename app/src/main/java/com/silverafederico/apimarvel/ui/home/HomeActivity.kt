@@ -10,10 +10,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.silverafederico.apimarvel.adapter.CharacterAdapter
 import com.silverafederico.apimarvel.adapter.OnItemClickListen
 import com.silverafederico.apimarvel.data.models.MarvelCharacter
 import com.silverafederico.apimarvel.databinding.ActivityHomeBinding
+import com.silverafederico.apimarvel.ui.auth.LoginActivity
 import com.silverafederico.apimarvel.ui.character.DetailsCharacterActivity
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
@@ -24,6 +26,8 @@ class HomeActivity : AppCompatActivity(), OnItemClickListen {
     private lateinit var binding: ActivityHomeBinding
     private val viewModel by viewModel<HomeViewModel>()
     private val handler = Handler(Looper.getMainLooper())
+
+    private lateinit var auth: FirebaseAuth
     private val runnable = Runnable {
         viewModel.setSearchQuery(binding.searchBar.query.toString())
     }
@@ -31,6 +35,7 @@ class HomeActivity : AppCompatActivity(), OnItemClickListen {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.uiState.observe(this@HomeActivity){uiState ->
@@ -58,9 +63,18 @@ class HomeActivity : AppCompatActivity(), OnItemClickListen {
             binding.searchBar.isIconified = false
         }
 
+        binding.btnLogout.setOnClickListener{
+            logout()
+        }
+
     }
 
-
+    private fun logout() {
+        auth.signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
 
 
