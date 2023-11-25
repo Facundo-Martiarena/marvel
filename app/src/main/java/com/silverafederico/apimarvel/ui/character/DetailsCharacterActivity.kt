@@ -58,6 +58,9 @@ class DetailsCharacterActivity : AppCompatActivity(), OnItemComicClickListen {
                 }
             }
         }
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
 
     }

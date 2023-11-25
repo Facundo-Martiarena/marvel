@@ -29,6 +29,7 @@ class DetailsComicActivity : AppCompatActivity() {
         val itemJson = intent.getStringExtra("item")
         val item: MarvelComic? = itemJson?.let { Json.decodeFromString(it) }
         binding.name.text = item?.title
+        binding.issueNumber.text = "("+item?.issueNumber.toString()+")"
         binding.description.text = item?.description
         binding.imageView.load(item?.image){
             crossfade(true)
@@ -47,6 +48,9 @@ class DetailsComicActivity : AppCompatActivity() {
 
                 }
             }
+        }
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
         }
 
     }
