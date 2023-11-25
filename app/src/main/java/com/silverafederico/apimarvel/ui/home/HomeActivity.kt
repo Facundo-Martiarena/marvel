@@ -35,7 +35,7 @@ class HomeActivity : AppCompatActivity(), OnItemClickListen {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        auth = FirebaseAuth.getInstance()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.uiState.observe(this@HomeActivity){uiState ->

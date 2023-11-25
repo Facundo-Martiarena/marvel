@@ -38,9 +38,10 @@ class ResetPasswordActivity : AppCompatActivity() {
                     }
                 }
 
-            binding.btnCancel.setOnClickListener {
-                showLoginScreen()
-            }
+
+        }
+        binding.btnCancel.setOnClickListener {
+            showLoginScreen()
         }
     }
 
